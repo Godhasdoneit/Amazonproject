@@ -87,7 +87,7 @@ pipeline {
                         sh "docker stop ${containername}"
                         sh "docker rm ${containername}"
                     }
-                    sh "docker run -d -p 3000:3000 --name ${container} blesseddocker/amazon-app:latest"
+                    sh "docker run -d -p 3000:3000 --name ${containername} blesseddocker/amazon-app:latest"
                 }
             }   
        }
