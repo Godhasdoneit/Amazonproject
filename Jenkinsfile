@@ -77,6 +77,21 @@ pipeline {
                     echo "Push Image to Registry"
                 }
             }
-        }       
-    }
+        } 
+        stage('containerization Deployment') {
+            steps{
+                script{
+                    def containername = 'Amazonproject'
+                    def isRunning = sh(script: "docker ps -a | grep ${containername}", returnStatus: true)
+                    if (isRunning == 0) {
+                        sh "docker stop ${containername}"
+                        sh "docker rm ${containername}"
+                    }
+                    sh "docker run -d -p 3000:3000 --name ${container} blesseddocker/amazon-app:latest"
+                }
+            }   
+       }
+    }  
 }
+
+
