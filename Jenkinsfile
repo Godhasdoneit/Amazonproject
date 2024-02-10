@@ -35,8 +35,7 @@ pipeline {
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
                 }
               }
-            }
-            
+            }           
         }
         stage('Install Dependencies') {
             steps {
